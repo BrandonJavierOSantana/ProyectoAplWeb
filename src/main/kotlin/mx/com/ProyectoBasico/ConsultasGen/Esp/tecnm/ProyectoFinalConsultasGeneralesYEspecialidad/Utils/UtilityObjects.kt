@@ -4,7 +4,6 @@ import org.springframework.stereotype.Component
 
 @Component("Items")
 object Items{
-    //Aside para la parte de Administrador
     val asideAdmin = listOf(
         mapOf("text" to "Lista Administradores", "href" to "#"),
         mapOf("text" to "Registrar Administrador", "href" to "#"),
