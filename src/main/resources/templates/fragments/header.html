@@ -1,0 +1,69 @@
+<header th:fragment="header">
+    <link rel="stylesheet" th:href="@{/css/SalusVitalCare.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+
+    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm custom-header">
+        <div class="container-fluid">
+            <!-- Logo + texto según rol -->
+            <div class="navbar-brand d-flex align-items-center p-0">
+                <a th:if="${#authorization.expression('hasRole(''ADMIN'')')}"
+                   th:href="@{/admin/home}" class="d-flex align-items-center text-decoration-none">
+                    <img th:src="@{/imgs/logoSVCv3.png}" alt="Logo" width="32" height="32" class="rounded-circle me-2">
+                    <span class="fs-4 fst-italic">Salus Vital Care</span>
+                </a>
+                <a th:if="${#authorization.expression('hasRole(''USER'')')}"
+                   th:href="@{/user/home}" class="d-flex align-items-center text-decoration-none">
+                    <img th:src="@{/imgs/logoSVCv3.png}" alt="Logo" width="32" height="32" class="rounded-circle me-2">
+                    <span class="fs-4 fst-italic">Salus Vital Care</span>
+                </a>
+                <a th:if="${#authorization.expression('isAnonymous()')}"
+                   th:href="@{/login}" class="d-flex align-items-center text-decoration-none">
+                    <img th:src="@{/imgs/logoSVCv3.png}" alt="Logo" width="32" height="32" class="rounded-circle me-2">
+                    <span class="fs-4 fst-italic">Salus Vital Care</span>
+                </a>
+            </div>
+            <!-- responsive toggle -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Menú -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+<!--                    <li class="nav-item"><a class="nav-link" href="/">Inicio</a></li>-->
+<!--                    <li class="nav-item"><a class="nav-link" href="/acerca-de">¿Quiénes somos?</a></li>-->
+                    <!-- Admin links -->
+                    <li class="nav-item" th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
+                        <a class="nav-link" href="/admin/administradores">Administradores</a>
+                    </li>
+                    </li>
+                    <li class="nav-item" th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
+                        <a class="nav-link" href="/admin/lista-medicos">Médicos</a>
+                    </li>
+                    <li class="nav-item" th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
+                        <a class="nav-link" href="/admin/lista-pacientes">Pacientes</a>
+                    </li>
+
+                    <!-- Médico links -->
+                    <li class="nav-item" th:if="${#authorization.expression('hasRole(''USER'')')}">
+                        <a class="nav-link" href="/consultas/mis-consultas">Mis consultas</a>
+                    </li>
+                    <li class="nav-item" th:if="${#authorization.expression('hasRole(''USER'')')}">
+                        <a class="nav-link" href="/historia-clinica">Historia clínica</a>
+                    </li>
+<!--                    <li class="nav-item"><a class="nav-link" href="/ayuda">Ayuda</a></li>-->
+                </ul>
+<!--                personas no logueadas-->
+<!--                <div class="d-flex align-items-center">-->
+<!--                    <div th:if="${#authorization.expression('isAnonymous()')}">-->
+<!--                        <a th:href="@{/login}" class="btn btn-outline-light me-2">Entrar</a>-->
+<!--                    </div>-->
+                    <div th:if="${#authorization.expression('isAuthenticated()')}" class="d-flex align-items-center">
+                        <span class="navbar-text text-light me-2" th:text="'Hola, ' + ${#authentication.name}"></span>
+                        <a href="/logout" class="btn btn-danger btn-sm btn-rounded">Cerrar sesión</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </nav>
+</header>

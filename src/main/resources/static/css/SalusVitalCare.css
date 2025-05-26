@@ -1,0 +1,21 @@
+/* Estilo cursivo elegante para el texto del navbar */
+.fs-4.fst-italic {
+    font-family: 'Segoe Script', cursive; /* Fuente cursiva */
+    font-style: italic;                  /* Asegura cursiva */
+    color: rgba(28, 28, 28, 0.96) !important; /* Gris al 60% */
+    text-align: center;
+    margin-bottom: 0; /* Ajusta si quieres espacio */
+}
+
+/* Si quieres un h1 con el mismo estilo en otras vistas */
+h1 {
+    font-family: 'Segoe Script', cursive;
+    font-style: italic;
+    color: rgba(128, 128, 128, 0.6) !important;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.btn-rounded {
+    border-radius: 1.5rem; /* ajusta el valor al que prefieras */
+}
