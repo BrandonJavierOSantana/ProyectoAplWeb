@@ -1,13 +1,22 @@
-<aside th:fragment="aside(title, items, classes, style)"
-       th:class="'sidebar ' + ${classes}"
-       th:style="${style}">
-  <h5 th:text="${title}" class="text-center"></h5>
-  <hr>
-  <div class="sidebar-content">
-    <ul class="nav flex-column mb-auto">
-      <li th:each="item : ${items}" class="nav-item">
-        <a th:href="${item.href}" th:text="${item.text}" class="nav-link">ERROR - EMPTY</a>
-      </li>
-    </ul>
-  </div>
+<aside xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+  <h5>Menú</h5>
+  <ul class="nav flex-column">
+
+    <!-- Ítems genéricos para todos -->
+    <li th:each="item : ${Items.asideConsultas}">
+      <a th:href="@{${item.href}}" th:text="${item.text}" class="nav-link"></a>
+    </li>
+    <li th:each="item : ${Items.asidePacientes}">
+      <a th:href="@{${item.href}}" th:text="${item.text}" class="nav-link"></a>
+    </li>
+
+    <!-- Ítems sólo para ADMIN -->
+    <li sec:authorize="hasRole('ADMIN')" th:each="item : ${Items.asideAdmin}">
+      <a th:href="@{${item.href}}" th:text="${item.text}" class="nav-link"></a>
+    </li>
+    <li sec:authorize="hasRole('ADMIN')" th:each="item : ${Items.asideMedicos}">
+      <a th:href="@{${item.href}}" th:text="${item.text}" class="nav-link"></a>
+    </li>
+
+  </ul>
 </aside>

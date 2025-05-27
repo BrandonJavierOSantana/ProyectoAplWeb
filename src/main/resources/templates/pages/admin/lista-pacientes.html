@@ -1,1 +1,12 @@
-<th:block th:replace="layouts/basicLayout :: layout('Historial Pacientes', 2025, ~{contents/admin/lista-pacientes :: content})" />
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<th:block
+        th:replace="
+      layouts/asideLayout :: layout(
+        title='Historial de Pacientes',
+        asideTitle='Pacientes',
+        asideItems=${@Items.asidePacientes},
+        content=~{contents/admin/lista-pacientes :: content}
+      )
+    " />
+</html>

@@ -1,0 +1,10 @@
+package mx.com.ProyectoBasico.ConsultasGen.Esp.tecnm.ProyectoFinalConsultasGeneralesYEspecialidad.repositories
+
+import mx.com.ProyectoBasico.ConsultasGen.Esp.tecnm.ProyectoFinalConsultasGeneralesYEspecialidad.Entity.PersonaPersonaAlergia
+import mx.com.ProyectoBasico.ConsultasGen.Esp.tecnm.ProyectoFinalConsultasGeneralesYEspecialidad.Entity.keys.PersonaPersonaAlergiaId
+import org.springframework.data.jpa.repository.JpaRepository
+import org.springframework.stereotype.Repository
+
+@Repository
+interface PersonaPersonaAlergiaRepository : JpaRepository<PersonaPersonaAlergia, PersonaPersonaAlergiaId> {
+}

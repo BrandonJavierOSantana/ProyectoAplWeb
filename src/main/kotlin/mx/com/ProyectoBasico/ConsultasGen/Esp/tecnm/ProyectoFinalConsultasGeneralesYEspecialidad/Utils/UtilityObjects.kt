@@ -8,6 +8,10 @@ object Items{
         mapOf("text" to "Lista Administradores", "href" to "#"),
         mapOf("text" to "Registrar Administrador", "href" to "#"),
     )
+    val asideConsultas= listOf(
+        mapOf("text" to "Lista Consultas", "href" to "#"),
+        mapOf("text" to "Registrar Consultas", "href" to "#"),
+    )
 
     val asideMedicos = listOf(
         mapOf("text" to "Lista Medicos", "href" to "#"),
@@ -19,19 +23,4 @@ object Items{
         mapOf("text" to "Registrar Paciente", "href" to "#"),
 
         )
-
-    val asideConsultas= listOf(
-        mapOf("text" to "Lista Consultas", "href" to "#"),
-        mapOf("text" to "Registrar Consultas", "href" to "#"),
-    )
-
-
-
-
-
-
-
-
-
-
 }
