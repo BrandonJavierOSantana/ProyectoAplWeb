@@ -1,17 +1,17 @@
 package mx.com.ProyectoBasico.ConsultasGen.Esp.tecnm.ProyectoFinalConsultasGeneralesYEspecialidad.Controller
 
 import mx.com.ProyectoBasico.ConsultasGen.Esp.tecnm.ProyectoFinalConsultasGeneralesYEspecialidad.Entity.Persona
-import mx.com.ProyectoBasico.ConsultasGen.Esp.tecnm.ProyectoFinalConsultasGeneralesYEspecialidad.Entity.PersonaReligion
-import mx.com.ProyectoBasico.ConsultasGen.Esp.tecnm.ProyectoFinalConsultasGeneralesYEspecialidad.Entity.PersonaTipoSanguineo
-import mx.com.ProyectoBasico.ConsultasGen.Esp.tecnm.ProyectoFinalConsultasGeneralesYEspecialidad.Entity.Direccion
 import mx.com.ProyectoBasico.ConsultasGen.Esp.tecnm.ProyectoFinalConsultasGeneralesYEspecialidad.services.PersonaService
 import mx.com.ProyectoBasico.ConsultasGen.Esp.tecnm.ProyectoFinalConsultasGeneralesYEspecialidad.services.PersonaReligionService
 import mx.com.ProyectoBasico.ConsultasGen.Esp.tecnm.ProyectoFinalConsultasGeneralesYEspecialidad.services.PersonaTipoSanguineoService
 import mx.com.ProyectoBasico.ConsultasGen.Esp.tecnm.ProyectoFinalConsultasGeneralesYEspecialidad.services.DireccionService
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
-import org.springframework.web.bind.annotation.*
-import java.time.LocalDate
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.ModelAttribute
+import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestMapping
 import java.util.UUID
 
 @Controller
@@ -31,28 +31,9 @@ class PersonaController(
 
     @GetMapping("/form")
     fun showForm(model: Model): String {
-        val persona = Persona(
-            id = null,
-            nombre = "",
-            apellidoPaterno = "",
-            apellidoMaterno = "",
-            curp = "",
-            tipoSanguineo = PersonaTipoSanguineo(),
-            grupoEtnico = "",
-            religion = PersonaReligion(),
-            nss = "",
-            direccion = Direccion(),
-            fechaNacimiento = LocalDate.now(),
-            institucion = "",
-            nivelSocioeconomico = "",
-            telefono = "",
-            contrasena = "",
-            sexo = 'M',
-            rol = "USER"
-        )
-        model.addAttribute("persona", persona)
-        model.addAttribute("tiposSanguineos", tipoSanguineoService.findAllPersonaTipoSanguineo())
-        model.addAttribute("religiones", religionService.findAllPersonaReligion())
+        model.addAttribute("persona", Persona())
+        model.addAttribute("tiposSanguineos", tipoSanguineoService.findAll())
+        model.addAttribute("religiones", religionService.findAll())
         model.addAttribute("direcciones", direccionService.findAllDireccion())
         return "pages/persona/form"
     }
@@ -66,15 +47,10 @@ class PersonaController(
 
     @GetMapping("/edit/{id}")
     fun editForm(@PathVariable id: UUID, model: Model): String {
-        val persona = personaService.findPersonaById(id).orElse(Persona(
-            id = id, nombre = "", apellidoPaterno = "", apellidoMaterno = "", curp = "",
-            tipoSanguineo = PersonaTipoSanguineo(), grupoEtnico = "", religion = PersonaReligion(), nss = "",
-            direccion = Direccion(), fechaNacimiento = LocalDate.now(), institucion = "", nivelSocioeconomico = "",
-            telefono = "", contrasena = "", sexo = 'M', rol = "USER"
-        ))
+        val persona = personaService.findPersonaById(id).orElse(Persona())
         model.addAttribute("persona", persona)
-        model.addAttribute("tiposSanguineos", tipoSanguineoService.findAllPersonaTipoSanguineo())
-        model.addAttribute("religiones", religionService.findAllPersonaReligion())
+        model.addAttribute("tiposSanguineos", tipoSanguineoService.findAll())
+        model.addAttribute("religiones", religionService.findAll())
         model.addAttribute("direcciones", direccionService.findAllDireccion())
         return "pages/persona/form"
     }

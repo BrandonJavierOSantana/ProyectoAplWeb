@@ -25,24 +25,24 @@ data class Persona(
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_tipo_sanguineo", nullable = false)
-    var tipoSanguineo: PersonaTipoSanguineo,
+    var tipoSanguineo: PersonaTipoSanguineo = PersonaTipoSanguineo(),
 
     @Column(name = "grupo_etnico", nullable = false, length = 20)
     var grupoEtnico: String = "",
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_religion", nullable = false)
-    var religion: PersonaReligion,
+    var religion: PersonaReligion = PersonaReligion(),
 
     @Column(name = "nss", nullable = false, length = 10)
     var nss: String = "",
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_direccion", nullable = false)
-    var direccion: Direccion,
+    var direccion: Direccion = Direccion(),
 
     @Column(name = "fecha_nacimiento", nullable = false)
-    var fechaNacimiento: LocalDate,
+    var fechaNacimiento: LocalDate = LocalDate.now(),
 
     @Column(name = "institucion", nullable = false, length = 50)
     var institucion: String = "",
@@ -57,9 +57,8 @@ data class Persona(
     var contrasena: String = "",
 
     @Column(name = "sexo", nullable = false, length = 1)
-    var sexo: Char? = null,
+    var sexo: Char = 'M',
 
     @Column(name = "rol", nullable = false, length = 20)
     var rol: String = "USER"
 )
-
