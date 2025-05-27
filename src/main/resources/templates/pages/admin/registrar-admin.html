@@ -1,1 +1,9 @@
-<th:block th:replace="layouts/basicLayout :: layout('Registrar Administrador', 2025, ~{contents/admin/registrar-admin :: content})" />
+<th:block
+        th:replace="
+      layouts/asideLayout :: layout(
+        title='Registrar Administradores',
+        asideTitle='Administradores',
+        asideItems=${@Items.asideAdmin},
+        content=~{contents/admin/administradores :: content}
+      )
+" />

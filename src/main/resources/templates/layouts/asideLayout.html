@@ -6,11 +6,12 @@
     <body class="row">
     <header th:replace="fragments/header :: header"></header>
     <aside th:replace="fragments/aside :: aside(
-                title=${asideTitle},
-                items=${asideItems},
-                classes='col-2',
-                style='height: 100vh; overflow-y: auto;')">
+        title=${asideTitle},
+        items=${asideItems},
+        classes='col-2',
+        style='height: 100vh; overflow-y: auto;')">
     </aside>
+
     <main class="col-10 p-2">
         <div th:replace="${content}"></div>
     </main>

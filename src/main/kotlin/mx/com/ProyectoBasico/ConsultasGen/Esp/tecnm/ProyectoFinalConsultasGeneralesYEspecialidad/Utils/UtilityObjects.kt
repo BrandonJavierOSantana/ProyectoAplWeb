@@ -5,8 +5,8 @@ import org.springframework.stereotype.Component
 @Component("Items")
 object Items{
     val asideAdmin = listOf(
-        mapOf("text" to "Lista Administradores", "href" to "#"),
-        mapOf("text" to "Registrar Administrador", "href" to "#"),
+        mapOf("text" to "Lista Administradores", "href" to "/admin/administradores"),
+        mapOf("text" to "Registrar Administrador", "href" to "/admin/registrar-admin")
     )
     val asideConsultas= listOf(
         mapOf("text" to "Lista Consultas", "href" to "#"),
