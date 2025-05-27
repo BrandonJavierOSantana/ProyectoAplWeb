@@ -1,8 +1,9 @@
-package mx.tecnm.cdmadero.api.repositories
+package mx.com.ProyectoBasico.ConsultasGen.Esp.tecnm.ProyectoFinalConsultasGeneralesYEspecialidad.repositories
 
-import mx.tecnm.cdmadero.api.entities.ConsultaGeneral
+import mx.com.ProyectoBasico.ConsultasGen.Esp.tecnm.ProyectoFinalConsultasGeneralesYEspecialidad.Entity.ConsultaGeneral
 import org.springframework.data.jpa.repository.JpaRepository
+import org.springframework.stereotype.Repository
 import java.util.*
 
-interface ConsultaGeneralRepository: JpaRepository<ConsultaGeneral, UUID> {
-}
+@Repository
+interface ConsultaGeneralRepository : JpaRepository<ConsultaGeneral, UUID>
